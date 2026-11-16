@@ -13,6 +13,8 @@ lipo -create -output "$APP/Contents/MacOS/oneko" \
   target/aarch64-apple-darwin/release/oneko \
   target/x86_64-apple-darwin/release/oneko
 
+cp assets/AppIcon.icns "$APP/Contents/Resources/AppIcon.icns"
+
 cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -24,6 +26,7 @@ cat > "$APP/Contents/Info.plist" <<PLIST
   <key>CFBundleVersion</key><string>$VERSION</string>
   <key>CFBundleShortVersionString</key><string>$VERSION</string>
   <key>CFBundleExecutable</key><string>oneko</string>
+  <key>CFBundleIconFile</key><string>AppIcon</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>LSMinimumSystemVersion</key><string>11.0</string>
   <key>LSUIElement</key><true/>

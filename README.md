@@ -23,6 +23,7 @@ cargo run --release              # classic 32px cat
 cargo run --release -- --scale 2 # bigger cat
 cargo run --release -- --character dog
 python3 scripts/xbm2sheet.py <oneko-src> assets  # regenerate sheets from the original XBMs
+python3 scripts/make-icon.py                      # regenerate app icons (needs Pillow)
 scripts/bundle-macos.sh          # universal Oneko.app + dmg in dist/
 ```
 
