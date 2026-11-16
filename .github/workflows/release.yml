@@ -1,0 +1,44 @@
+name: release
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-apple-darwin,x86_64-apple-darwin
+      - run: cargo test
+      - run: scripts/bundle-macos.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oneko-macos
+          path: dist/*.dmg
+      - uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: dist/*.dmg
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test
+      - run: cargo build --release
+      - run: copy target\release\oneko.exe oneko-windows-x64.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oneko-windows
+          path: oneko-windows-x64.exe
+      - uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: oneko-windows-x64.exe
