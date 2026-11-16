@@ -15,6 +15,8 @@ Grab the latest release:
   right-click it and choose **Open**.
 - **Windows:** download `oneko-windows-x64.exe` and run it. SmartScreen will warn once because the exe
   isn't signed; click *More info* then *Run anyway*.
+  **Windows is not verified yet.** It builds and passes unit tests on CI but hasn't been run on a real
+  Windows desktop. If you try it, please open an issue saying what happened.
 
 ## Build from source
 
