@@ -2,6 +2,8 @@
 
 The classic cursor-chasing cat, as a native tray app for macOS and Windows. Written in Rust.
 
+<p align="center"><img src="assets/demo.gif" width="480" alt="oneko chasing the cursor on macOS, then switching character from the menu bar"></p>
+
 - Transparent, click-through, always-on-top window, so the cat never gets in your way.
 - Follows you across Spaces and over full-screen apps on macOS.
 - All five original characters: neko, tora, dog, sakura, tomoyo. Switch from the tray menu.
